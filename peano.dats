@@ -1,4 +1,4 @@
-(* A template for single-file ATS programs *)
+(* Peano numbers on ATS *)
 
 (* ****** ****** *)
 
