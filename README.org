@@ -4,14 +4,14 @@
 
 To compile:
 
-```
+#+NAME:
+#+BEGIN_SRC bash
   myatscc peano.dats
+#+END_SRC
 
-```
+To run:
 
-To run: 
-
-```
-  ./peano_dats 
-
-```
+#+NAME:
+#+BEGIN_SRC bash
+  ./peano_dats
+#+END_SRC
