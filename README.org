@@ -1,0 +1,17 @@
+* Info
+
+* Make
+
+To compile:
+
+```
+  myatscc peano.dats
+
+```
+
+To run: 
+
+```
+  ./peano_dats 
+
+```
