@@ -1,4 +1,4 @@
-(* Peano numbers on ATS *)
+(* A template for single-file ATS programs *)
 
 (* ****** ****** *)
 
@@ -14,14 +14,18 @@ peano =
 fun peano_to_int (ns: peano): int = 
   case+ ns of 
   | zero()  => 0 
-  | succ(n) => 
-      1 + peano_to_int(n)
+  | succ(n) => 1 + peano_to_int(n)
+
+fun int_to_peano (n: int): peano =
+  case+ n of
+  | 0 => zero
+  | n => succ(int_to_peano(n - 1))
 
 fun peano_add (n: peano, m: peano): peano = 
   case (n, m) of 
   | (zero(), x)  => x
   | (x, zero())  => x
-  | (succ(x), y) => peano_add(x, succ(y))
+  | (succ(x), y) => succ(peano_add(x, y))
 
 fun peano_mult (n: peano, m: peano): peano = 
   case (n, m) of 
@@ -29,8 +33,7 @@ fun peano_mult (n: peano, m: peano): peano =
   | (x, zero())       => zero
   | (succ(zero()), x) => x 
   | (x, succ(zero())) => x 
-  | (succ(x), y)      => 
-      peano_add (peano_mult(x,y), y)
+  | (succ(x), y)      => peano_add (peano_mult(x,y), y)
 
 (* Data *)
 
@@ -41,10 +44,17 @@ val three = succ(two)
 (* *** *)
 
 val _ = println!("2 * 3 = ", peano_to_int(
-  peano_mult (two, three) ))
+  peano_mult(two, three)))
 
-val _ = println!("2 + 3 = ", peano_to_int(
-  peano_add (two, three) ))
+val _ = println!("3 + 3 = ", peano_to_int(
+  peano_add(three, three)))
+
+val _ = println!("69 + 666 = ", peano_to_int(
+  peano_add(
+    int_to_peano(69),
+    int_to_peano(666)
+  )
+))
 
 (* ****** ****** *)
 
