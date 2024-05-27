@@ -38,30 +38,40 @@ fun peano_add (n: peano, m: peano): peano =
 
 fun peano_mult (n: peano, m: peano): peano = 
   case (n, m) of 
-  | (zero(), x)       => zero
-  | (x, zero())       => zero
-  | (succ(x), y)      => peano_add (peano_mult(x,y), y)
+  | (zero(), x)  => zero
+  | (x, zero())  => zero
+  | (succ(x), y) => peano_add (peano_mult(x,y), y)
 
 (* ****** ****** *)
 
 implement main0 () = {
-  val _ = println!("2 * 3 = ", peano_to_int(
-    peano_mult(two, three)))
-  
-  val _ = println!("3 + 3 = ", peano_to_int(
-    peano_add(three, three)))
-  
-  val _ = println!("69 + 666 = ", peano_to_int(
-    peano_add(
-      int_to_peano(69),
-      int_to_peano(666)
+  val _ = println!
+    ( "2 * 3 = "
+    , peano_to_int(peano_mult(two, three))
     )
-  ))
   
-  val _ = println!("69 * 3 = ", peano_to_int(
-    peano_mult(
-      int_to_peano(69),
-      int_to_peano(3)
+  val _ = println!
+    ( "3 + 3 = "
+    , peano_to_int (peano_add(three, three))
     )
-  ))
+  
+  val _ = println!
+    ( "69 + 666 = "
+    , peano_to_int
+      ( peano_add
+        ( int_to_peano(69)
+        , int_to_peano(666)
+        )
+      )
+    )
+  
+  val _ = println!
+    ( "69 * 3 = "
+    , peano_to_int
+        ( peano_mult
+            ( int_to_peano(69)
+            , int_to_peano(3)
+            )
+        )
+    )
 }
